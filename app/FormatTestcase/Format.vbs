@@ -41,7 +41,7 @@ Sub WorksheetLoop2()
         
                         .Characters(k, 7).Font.Bold = True
                         
-                        u = InStr(1, cv, "URL:", 1)
+                        u = InStr(1, cv, "Url:", 1)
         
                         .Characters(u, 4).Font.Bold = True
         
