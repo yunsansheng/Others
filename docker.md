@@ -15,9 +15,12 @@
 
 ## 用法：
 
-```
+```bash
+docker command --help 查找帮助
+
 # 列出本机的所有 image 文件。
 $ docker image ls
+$ docker images 
 
 # 删除 image 文件
 $ docker image rm [imageName]
@@ -29,19 +32,24 @@ $ docker image pull hello-world
 
 #运行image 命令会从 image 文件，生成一个正在运行的容器实例。如果发现本地没有指定的 image 文件，就会从仓库自动抓取。因此，前面的docker image pull命令并不是必需的步骤。
 $ docker container run hello-world
-
-进入交互模式运行
+# 这里的container可以省略
+#当我们创建一个容器的时候，docker会自动对它进行命名。另外，我们也可以使用--name标识来命名容器，例如：
+###进入交互模式运行
 docker run -i -t ubuntu:15.10 /bin/bash
-
+#-t:在新容器内指定一个伪终端或终端。
+#-i:允许你对容器内的标准输入 (STDIN) 进行交互。
 
 前面的docker container run命令是新建容器，每运行一次，就会新建一个容器。同样的命令运行两次，就会生成两个一模一样的容器文件。如果希望重复使用容器，就要使用
 $ docker container start [containID]
-
+$ docker start -i 7504b3c65f23
 
 #对于那些不会自动终止的容器，必须使用docker container kill 命令手动终止。
 $ docker container kill [containID]
-
-
+#这种方式也可以后台启动
+$ docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+ #-d, --detach   Run container in background and print container ID
+ 
+ 
 # 列出本机正在运行的容器
 $ docker ps 
 $ docker container ls
